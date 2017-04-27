@@ -1,3 +1,5 @@
+; Vlad Khitev 26.04.2017
+
 (setf adjacency-list '(
     (0 (1))
     (1 (0 2))
@@ -36,7 +38,7 @@
     (34 (33 35))
     (35 (34 36))
     (36 (35))
-    (37 (25))              
+    (37 (25))             
 ))
 
 ; Creates hashtable from adjacency list
@@ -53,6 +55,7 @@
         (gethash node graph)))
 
 ; Recursive version of BFS to build a search-tree
+; MUTATES GRAPH (?!?!)
 ; bfs-tree :: a → (a → Set a) → [a]
 (defun bfs-tree (initial expand)
     (defun bfsi (pending tree)       
@@ -62,7 +65,7 @@
                 (setf new-pending                      ; Expand all pending nodes and subtract visited
                       (remove-duplicates
                           (set-difference
-                               (mapcan expand pending)
+                               (mapcan expand pending) ; Why the fuck does it mutate graph?
                                tree)))
                 (setf new-tree                         ; Add new nodes to current tree
                       (remove-duplicates
@@ -74,10 +77,9 @@
     (nconc queue (list value)))
 
 (defun qpop (queue)
-    (pop queue)
-    queue)
+    (cdr queue))
 
-(defun backtrace (back-path initial goal)
+(defun backtrace (back-path goal)
     (setf path (list goal))
     (loop while (not (null (gethash goal back-path))) do
           (setf goal (gethash goal back-path))
@@ -91,14 +93,12 @@
     (setf visited (list initial))
     (setf path (make-hash-table))
     (loop while (not (null queue)) do
-          (setf current (car (last queue)))               ; Get top element
+          (setf current (car queue))                      ; Get top element
           (setf queue (qpop queue))                       ; Pop top element
-          
           (when (= current goal)
               (return-from bfs-path
                            (backtrace path
-                                      initial
-                                      goal)))             ; Return true if path is found
+                                      goal)))             ; Return tree if path is found
           
           (setf expanded (funcall expand current))        ; Get adjacent nodes
           (loop for node in expanded do                   ; Iterate through siblings
@@ -108,8 +108,70 @@
                   (setf visited (qpush node visited)))))  ; Add it to visited
     nil)
 
+(defun spush (value stack)
+    (nconc stack (list value)))
+
+(defun spop (stack)
+    (reverse (cdr (reverse stack))))
+
+; Non-recursive version of DFS to build a search-tree
+; dfs-tree :: a → a → (a → Set a) → [a]
+(defun dfs-tree (initial expand)
+    (setf stack (list initial))
+    (setf visited (list initial))
+    (setf path (make-hash-table))
+    (setf tree (list initial))
+    (loop while (not (null stack)) do
+          (setf current (car (last stack)))                ; Get top element
+          (setf stack (spop stack))                        ; Pop top element
+          (setf last-added current)
+          
+          (setf expanded (funcall expand current))        ; Get adjacent nodes
+          (loop for node in expanded do                   ; Iterate through siblings
+              (when (not (find node visited))             ; If node not visited
+                  (setf (gethash node path) current)      ; Add it to path
+                  (setf stack (spush node stack))         ; Add it to stack
+                  (setf tree (spush node tree))
+                  (setf visited (spush node visited)))))  ; Add it to visited
+    tree)
+
+; Non-recursive version of DFS to find a path between two nodes
+; dfs-path :: a → a → (a → Set a) → [a]
+(defun dfs-path (initial goal expand)
+    (setf stack (list initial))
+    (setf visited (list initial))
+    (setf path (make-hash-table))
+    (setf last-added initial)
+    (loop while (not (null stack)) do
+          (setf current (car (last stack)))                ; Get top element
+          (setf stack (spop stack))                        ; Pop top element
+          (setf last-added current)
+          
+          (when (= current goal)
+              (return-from dfs-path
+                           (backtrace path
+                                      goal)))             ; Return tree if path is found
+          
+          (setf expanded (funcall expand current))        ; Get adjacent nodes
+          (loop for node in expanded do                   ; Iterate through siblings
+              (when (not (find node visited))             ; If node not visited
+                  (setf (gethash node path) current)      ; Add it to path
+                  (setf stack (spush node stack))         ; Add it to stack
+                  (setf visited (spush node visited)))))  ; Add it to visited
+    nil)
+
 (setf graph (create-graph adjacency-list))
 (setf expand (create-expander graph))
 
-(print (bfs-tree 0 expand))
+(print (dfs-path 0 22 expand))
+(print (dfs-tree 0 expand))
+
 (print (bfs-path 0 22 expand))
+(print (bfs-tree 0 expand))
+
+
+
+
+    
+    
+

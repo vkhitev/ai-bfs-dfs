@@ -1,0 +1,346 @@
+{
+  "graph": {
+    "0": [
+      1
+    ],
+    "1": [
+      0,
+      2
+    ],
+    "2": [
+      1,
+      3
+    ],
+    "3": [
+      2,
+      4
+    ],
+    "4": [
+      3,
+      5
+    ],
+    "5": [
+      4,
+      6,
+      19
+    ],
+    "6": [
+      5,
+      7
+    ],
+    "7": [
+      6,
+      8
+    ],
+    "8": [
+      7,
+      9
+    ],
+    "9": [
+      8,
+      10
+    ],
+    "10": [
+      9,
+      11
+    ],
+    "11": [
+      10,
+      12,
+      27,
+      28
+    ],
+    "12": [
+      11,
+      13
+    ],
+    "13": [
+      12,
+      14
+    ],
+    "14": [
+      13,
+      15
+    ],
+    "15": [
+      14,
+      16
+    ],
+    "16": [
+      15,
+      17
+    ],
+    "17": [
+      16,
+      18
+    ],
+    "18": [
+      17
+    ],
+    "19": [
+      5,
+      20
+    ],
+    "20": [
+      19,
+      21
+    ],
+    "21": [
+      20,
+      22
+    ],
+    "22": [
+      21
+    ],
+    "23": [
+      24
+    ],
+    "24": [
+      23,
+      25
+    ],
+    "25": [
+      24,
+      26,
+      37
+    ],
+    "26": [
+      25,
+      27
+    ],
+    "27": [
+      26,
+      11
+    ],
+    "28": [
+      11,
+      29
+    ],
+    "29": [
+      28,
+      30
+    ],
+    "30": [
+      29,
+      31
+    ],
+    "31": [
+      30,
+      32
+    ],
+    "32": [
+      31,
+      33
+    ],
+    "33": [
+      32,
+      34
+    ],
+    "34": [
+      33,
+      35
+    ],
+    "35": [
+      34,
+      36
+    ],
+    "36": [
+      35
+    ],
+    "37": [
+      25
+    ]
+  },
+  "namedGraph": {
+    "West Lake": [
+      "Hightower",
+      "Ashby"
+    ],
+    "Vine City": [
+      "Ashby",
+      "Omni / Dome / GWCC"
+    ],
+    "Inman Park / Reynoldstown": [
+      "King Memorial",
+      "Edgewood / Candler Park"
+    ],
+    "Medical Center": [
+      "Dunwoody",
+      "Buckhead"
+    ],
+    "Arts Center": [
+      "Lindbergh Center",
+      "Midtown"
+    ],
+    "King Memorial": [
+      "Georgia State",
+      "Inman Park / Reynoldstown"
+    ],
+    "Omni / Dome / GWCC": [
+      "Vine City",
+      "Five Points"
+    ],
+    "Oakland City": [
+      "West End",
+      "Lakewood / Fort McPherson"
+    ],
+    "Hightower": [
+      "West Lake"
+    ],
+    "Peachtree Center.": [
+      "Civic Center",
+      "Five Points"
+    ],
+    "North Avenue": [
+      "Midtown",
+      "Civic Center"
+    ],
+    "Avondale": [
+      "Decatur",
+      "Keningston"
+    ],
+    "West End": [
+      "Garnett",
+      "Oakland City"
+    ],
+    "Airport": [
+      "College Park"
+    ],
+    "Brookhaven / Oglethorpe University": [
+      "Lenox",
+      "Chamblee"
+    ],
+    "Indian Creec": [
+      "Keningston"
+    ],
+    "Civic Center": [
+      "North Avenue",
+      "Peachtree Center."
+    ],
+    "North Springs": [
+      "Sandy Springs"
+    ],
+    "Edgewood / Candler Park": [
+      "Inman Park / Reynoldstown",
+      "East Lake"
+    ],
+    "Ashby": [
+      "West Lake",
+      "Vine City",
+      "Bankhead"
+    ],
+    "East Point": [
+      "Lakewood / Fort McPherson",
+      "College Park"
+    ],
+    "Keningston": [
+      "Avondale",
+      "Indian Creec"
+    ],
+    "Garnett": [
+      "Five Points",
+      "West End"
+    ],
+    "Georgia State": [
+      "Five Points",
+      "King Memorial"
+    ],
+    "Dunwoody": [
+      "Sandy Springs",
+      "Medical Center"
+    ],
+    "Five Points": [
+      "Peachtree Center.",
+      "Garnett",
+      "Omni / Dome / GWCC",
+      "Georgia State"
+    ],
+    "Decatur": [
+      "East Lake",
+      "Avondale"
+    ],
+    "East Lake": [
+      "Edgewood / Candler Park",
+      "Decatur"
+    ],
+    "College Park": [
+      "East Point",
+      "Airport"
+    ],
+    "Lakewood / Fort McPherson": [
+      "Oakland City",
+      "East Point"
+    ],
+    "Lindbergh Center": [
+      "Buckhead",
+      "Arts Center",
+      "Lenox"
+    ],
+    "Doraville": [
+      "Chamblee"
+    ],
+    "Midtown": [
+      "Arts Center",
+      "North Avenue"
+    ],
+    "Buckhead": [
+      "Medical Center",
+      "Lindbergh Center"
+    ],
+    "Chamblee": [
+      "Brookhaven / Oglethorpe University",
+      "Doraville"
+    ],
+    "Sandy Springs": [
+      "North Springs",
+      "Dunwoody"
+    ],
+    "Bankhead": [
+      "Ashby"
+    ],
+    "Lenox": [
+      "Lindbergh Center",
+      "Brookhaven / Oglethorpe University"
+    ]
+  },
+  "nodes": {
+    "0": "North Springs",
+    "1": "Sandy Springs",
+    "2": "Dunwoody",
+    "3": "Medical Center",
+    "4": "Buckhead",
+    "5": "Lindbergh Center",
+    "6": "Arts Center",
+    "7": "Midtown",
+    "8": "North Avenue",
+    "9": "Civic Center",
+    "10": "Peachtree Center.",
+    "11": "Five Points",
+    "12": "Garnett",
+    "13": "West End",
+    "14": "Oakland City",
+    "15": "Lakewood / Fort McPherson",
+    "16": "East Point",
+    "17": "College Park",
+    "18": "Airport",
+    "19": "Lenox",
+    "20": "Brookhaven / Oglethorpe University",
+    "21": "Chamblee",
+    "22": "Doraville",
+    "23": "Hightower",
+    "24": "West Lake",
+    "25": "Ashby",
+    "26": "Vine City",
+    "27": "Omni / Dome / GWCC",
+    "28": "Georgia State",
+    "29": "King Memorial",
+    "30": "Inman Park / Reynoldstown",
+    "31": "Edgewood / Candler Park",
+    "32": "East Lake",
+    "33": "Decatur",
+    "34": "Avondale",
+    "35": "Keningston",
+    "36": "Indian Creec",
+    "37": "Bankhead"
+  }
+}
